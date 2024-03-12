@@ -1,0 +1,30 @@
+[2024-03-12T15:14:49.734+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: car_price_prediction.pipeline manual__2024-03-12T15:13:03.417199+00:00 [queued]>
+[2024-03-12T15:14:49.745+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: car_price_prediction.pipeline manual__2024-03-12T15:13:03.417199+00:00 [queued]>
+[2024-03-12T15:14:49.745+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2024-03-12T15:14:49.762+0000] {taskinstance.py:2217} INFO - Executing <Task(PythonOperator): pipeline> on 2024-03-12 15:13:03.417199+00:00
+[2024-03-12T15:14:49.770+0000] {standard_task_runner.py:60} INFO - Started process 70 to run task
+[2024-03-12T15:14:49.774+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'car_price_prediction', 'pipeline', 'manual__2024-03-12T15:13:03.417199+00:00', '--job-id', '1361', '--raw', '--subdir', 'DAGS_FOLDER/hw_dag.py', '--cfg-path', '/tmp/tmppsookyu_']
+[2024-03-12T15:14:49.776+0000] {standard_task_runner.py:88} INFO - Job 1361: Subtask pipeline
+[2024-03-12T15:14:49.838+0000] {task_command.py:423} INFO - Running <TaskInstance: car_price_prediction.pipeline manual__2024-03-12T15:13:03.417199+00:00 [running]> on host a13443147b26
+[2024-03-12T15:14:49.949+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='car_price_prediction' AIRFLOW_CTX_TASK_ID='pipeline' AIRFLOW_CTX_EXECUTION_DATE='2024-03-12T15:13:03.417199+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-12T15:13:03.417199+00:00'
+[2024-03-12T15:14:52.253+0000] {pipeline.py:117} INFO - model: LogisticRegression, acc_mean: 0.7591, acc_std: 0.0075
+[2024-03-12T15:15:44.414+0000] {pipeline.py:117} INFO - model: RandomForestClassifier, acc_mean: 0.7797, acc_std: 0.0031
+[2024-03-12T15:16:01.550+0000] {pipeline.py:117} INFO - model: SVC, acc_mean: 0.7871, acc_std: 0.0042
+[2024-03-12T15:16:01.552+0000] {pipeline.py:122} INFO - best model: SVC, accuracy: 0.7871
+[2024-03-12T15:16:07.950+0000] {taskinstance.py:2731} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 444, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 414, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 200, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 217, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/home/airflow/airflow_hw/modules/pipeline.py", line 127, in pipeline
+    with open(model_filename, 'wb') as file:
+PermissionError: [Errno 13] Permission denied: '/home/airflow/airflow_hw/data/models/cars_pipe_202403121516.pkl'
+[2024-03-12T15:16:07.959+0000] {taskinstance.py:1149} INFO - Marking task as UP_FOR_RETRY. dag_id=car_price_prediction, task_id=pipeline, execution_date=20240312T151303, start_date=20240312T151449, end_date=20240312T151607
+[2024-03-12T15:16:07.981+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 1361 for task pipeline ([Errno 13] Permission denied: '/home/airflow/airflow_hw/data/models/cars_pipe_202403121516.pkl'; 70)
+[2024-03-12T15:16:08.039+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-03-12T15:16:08.069+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check

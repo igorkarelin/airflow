@@ -1,0 +1,18 @@
+[2024-03-12T15:45:53.759+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: car_price_prediction.pipeline manual__2024-03-12T15:45:51.107123+00:00 [queued]>
+[2024-03-12T15:45:53.769+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: car_price_prediction.pipeline manual__2024-03-12T15:45:51.107123+00:00 [queued]>
+[2024-03-12T15:45:53.770+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2024-03-12T15:45:53.785+0000] {taskinstance.py:2217} INFO - Executing <Task(PythonOperator): pipeline> on 2024-03-12 15:45:51.107123+00:00
+[2024-03-12T15:45:53.792+0000] {standard_task_runner.py:60} INFO - Started process 446 to run task
+[2024-03-12T15:45:53.795+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'car_price_prediction', 'pipeline', 'manual__2024-03-12T15:45:51.107123+00:00', '--job-id', '1370', '--raw', '--subdir', 'DAGS_FOLDER/hw_dag.py', '--cfg-path', '/tmp/tmpmi5f6320']
+[2024-03-12T15:45:53.797+0000] {standard_task_runner.py:88} INFO - Job 1370: Subtask pipeline
+[2024-03-12T15:45:53.846+0000] {task_command.py:423} INFO - Running <TaskInstance: car_price_prediction.pipeline manual__2024-03-12T15:45:51.107123+00:00 [running]> on host 02b724958849
+[2024-03-12T15:45:53.942+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='car_price_prediction' AIRFLOW_CTX_TASK_ID='pipeline' AIRFLOW_CTX_EXECUTION_DATE='2024-03-12T15:45:51.107123+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-12T15:45:51.107123+00:00'
+[2024-03-12T15:45:55.771+0000] {pipeline.py:117} INFO - model: LogisticRegression, acc_mean: 0.7591, acc_std: 0.0075
+[2024-03-12T15:46:42.830+0000] {pipeline.py:117} INFO - model: RandomForestClassifier, acc_mean: 0.7764, acc_std: 0.0022
+[2024-03-12T15:47:06.840+0000] {pipeline.py:117} INFO - model: SVC, acc_mean: 0.7871, acc_std: 0.0042
+[2024-03-12T15:47:06.841+0000] {pipeline.py:122} INFO - best model: SVC, accuracy: 0.7871
+[2024-03-12T15:47:18.447+0000] {pipeline.py:130} INFO - Model is saved as /home/***/***_hw/data/models/cars_pipe_202403121547.pkl
+[2024-03-12T15:47:18.453+0000] {python.py:202} INFO - Done. Returned value was: None
+[2024-03-12T15:47:18.472+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=car_price_prediction, task_id=pipeline, execution_date=20240312T154551, start_date=20240312T154553, end_date=20240312T154718
+[2024-03-12T15:47:18.534+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-03-12T15:47:18.574+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check
